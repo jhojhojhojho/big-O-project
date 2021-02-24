@@ -1,11 +1,40 @@
+const fishies = ['fish', 'fiiish', 'fiiiiish', 'fiiiish', 'fffish',
+'ffiiiiisshh', 'fsh', 'fiiiissshhhhhh'];
+// => "fiiiissshhhhhh";
+
 function quadraticBiggestFish(fishes) {
-  // Code goes here ...
+//nested loops for n^2
+//outer loop: holds first val of the array
+//inner loop: look at all other values of the array against outer loop val
+
+let longest = ''
+
+  for(let i = 0; i < fishes.length; i++){
+    let currentWord = fishes[i]
+
+    for(let j = 0; j < fishes.length; j++){
+      let words = fishes[j]
+
+      if(words.length > currentWord.length){
+        longest = words
+      }
+    }
+  }
+  return longest
 }
 
+// console.log(quadraticBiggestFish(fishies))
 
-function nlognBiggestFish(fishes) {
-  // Code goes here ...
+
+function nlognBiggestFish(fishes) { //sorts smallest to largest
+  fishes.sort((a, b) => {
+    a.length - b.length
+  })
+  return fishes[fishes.length - 1] //we want the last in the array
 }
+
+console.log(nlognBiggestFish(fishies))
+
 
 
 function linearBiggestFish(fishes) {
